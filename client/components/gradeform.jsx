@@ -35,6 +35,11 @@ class GradeForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    if (
+      this.state.name.length === 0 ||
+      this.state.course.length === 0 ||
+      this.state.grade.length === 0
+    ) return;
     const newGrade = {
       name: this.state.name,
       course: this.state.course,
