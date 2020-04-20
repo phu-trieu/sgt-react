@@ -44,8 +44,7 @@ class GradeForm extends Component {
     this.handleReset();
   }
 
-  handleReset(event) {
-    event.preventDefault();
+  handleReset() {
     this.setState({
       name: '',
       course: '',
@@ -55,45 +54,54 @@ class GradeForm extends Component {
 
   render() {
     return (
-      <form className=" d-flex flex-wrap justify-content-end" onSubmit={this.handleSubmit}>
-        <div className="mb-3 col-12 d-flex justify-content-end">
-          <span className="fas fa-user mr-2"></span>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Name"
-            value={this.state.name}
-            className="col-9"
-            onChange={this.handleNameChange} />
-        </div>
-        <div className="mb-3 col-12 d-flex justify-content-end">
-          <span className="fas fa-list-alt mr-2"></span>
-          <input
-            type="text"
-            name="course"
-            id="course"
-            placeholder="Course"
-            value={this.state.course}
-            className="col-9"
-            onChange={this.handleCourseChange} />
-        </div>
-        <div className="mb-3 col-12 d-flex justify-content-end">
-          <span className="fas fa-graduation-cap mr-2"></span>
-          <input
-            type="text"
-            name="grade"
-            id="grade"
-            placeholder="Grade"
-            value={this.state.grade}
-            className="col-9"
-            onChange={this.handleGradeChange} />
-        </div>
-        <div className="col-12 d-flex justify-content-end">
-          <button type="submit">Add</button>
-          <button onClick={this.handleReset} className="ml-3">Cancel</button>
-        </div>
-      </form>
+      <div className="container-fluid">
+        <form className=" d-flex flex-wrap " onSubmit={this.handleSubmit}>
+          <h2 className="d-flex col-12 justify-content-center">Add Grade</h2>
+          <div className="mb-3 col-12 p-0 input-group justify-content-center">
+            <div className="input-group-prepend">
+              <span className="fas fa-user input-group-text"></span>
+            </div>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              value={this.state.name}
+              className="col-9"
+              onChange={this.handleNameChange} />
+          </div>
+          <div className="mb-3 col-12 d-flex p-0 input-group justify-content-center">
+            <div className="input-group-prepend">
+              <span className="fas fa-list-alt input-group-text"></span>
+            </div>
+            <input
+              type="text"
+              name="course"
+              id="course"
+              placeholder="Course"
+              value={this.state.course}
+              className="col-9"
+              onChange={this.handleCourseChange} />
+          </div>
+          <div className="mb-3 col-12 d-flex p-0 input-group justify-content-center">
+            <div className="input-group-prepend">
+              <span className="fas fa-graduation-cap input-group-text"></span>
+            </div>
+            <input
+              type="text"
+              name="grade"
+              id="grade"
+              placeholder="Grade"
+              value={this.state.grade}
+              className="col-9 form-control"
+              onChange={this.handleGradeChange} />
+          </div>
+          <div className="col-12 d-flex justify-content-center p-0">
+            <button type="submit" className="btn btn-success">Add</button>
+            <button onClick={this.handleReset} className="ml-3 btn btn-outline-secondary">Cancel</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

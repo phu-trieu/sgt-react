@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.postGrade = this.postGrade.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,10 @@ class App extends React.Component {
   getAverageGrade() {
     const grades = this.state.grades;
     let sum = 0;
+    if (grades.length === 0) {
+      return 'N/A';
+    }
+
     for (let i = 0; i < grades.length; i++) {
       sum += grades[i].grade;
     }
@@ -53,12 +58,13 @@ class App extends React.Component {
     return (
       <div>
         <Header avg={this.getAverageGrade()}/>
-        <div className="d-flex">
-          <div className="col-8">
+        <hr/>
+        <div className="d-flex row">
+          <div className="col-lg-8 mx-5">
             <GradeTable grades={ this.state.grades } />
           </div>
-          <div className="col-4">
-            <GradeForm onSubmit={this.postGrade} />
+          <div className="col-xl-3">
+            <GradeForm onSubmit={ this.postGrade } />
           </div>
         </div>
       </div>

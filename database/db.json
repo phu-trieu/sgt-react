@@ -17,6 +17,18 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 100
+    },
+    {
+      "name": "Bob Ross",
+      "grade": 100,
+      "course": "Painting",
+      "id": 33
+    },
+    {
+      "name": "",
+      "grade": null,
+      "course": "",
+      "id": 34
     }
   ]
 }
