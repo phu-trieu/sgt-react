@@ -20,10 +20,21 @@ class App extends React.Component {
       }));
   }
 
+  getAverageGrade() {
+    const grades = this.state.grades;
+    let sum = 0;
+    for (let i = 0; i < grades.length; i++) {
+      sum += grades[i].grade;
+    }
+    const avg = (sum / grades.length).toFixed(2);
+    return (avg);
+  }
+
   render() {
+    this.getAverageGrade();
     return (
       <div>
-        <Header />
+        <Header avg={this.getAverageGrade()}/>
         <GradeTable grades={ this.state.grades } />
       </div>
     );
