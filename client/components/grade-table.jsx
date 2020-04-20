@@ -7,13 +7,14 @@ class GradeTable extends Component {
 
     if (grades.length === 0) {
       return (
-        <div className="table-responsive">
+        <div>
           <table className="table table-striped ml-3 col">
             <thead>
               <tr>
-                <th scope="col">Student Name</th>
-                <th scope="col">Course</th>
-                <th scope="col">Grade</th>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Grade</th>
+                <th>Operations</th>
               </tr>
             </thead>
           </table>
@@ -22,20 +23,23 @@ class GradeTable extends Component {
       );
     }
     return (
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th>Course</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {grades.map((grade, id) =>
-            <Grade key={id} grade={grade} />
-          )}
-        </tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Course</th>
+              <th>Grade</th>
+              <th>Operations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {grades.map((grade, id) =>
+              <Grade key={id} grade={grade} delete={this.props.delete}/>
+            )}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

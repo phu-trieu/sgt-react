@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.postGrade = this.postGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,28 @@ class App extends React.Component {
     return (avg);
   }
 
+  deleteGrade(deleteId) {
+    fetch(`api/grades/${deleteId}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(newGrades => {
+        const currentGrades = this.state.grades;
+        let currentGradeIndex;
+        const currentGradesCopy = currentGrades.slice();
+        for (let i = 0; i < currentGradesCopy.length; i++) {
+          if (currentGradesCopy[i].id === deleteId) {
+            currentGradeIndex = i;
+            break;
+          }
+        }
+        currentGradesCopy.splice(currentGradeIndex, 1);
+        this.setState({
+          grades: currentGradesCopy
+        });
+      });
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +84,7 @@ class App extends React.Component {
         <hr/>
         <div className="d-flex row">
           <div className="col-lg-8 mx-5">
-            <GradeTable grades={ this.state.grades } />
+            <GradeTable grades={ this.state.grades } delete={ this.deleteGrade } />
           </div>
           <div className="col-xl-3">
             <GradeForm onSubmit={ this.postGrade } />
