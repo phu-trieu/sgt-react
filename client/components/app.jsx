@@ -6,25 +6,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: [{
-        id: 5,
-        name: 'Kyle Simpson',
-        course: 'JavaScript',
-        grade: 100
-      },
-      {
-        id: 12,
-        name: 'Brendan Eich',
-        course: 'JavaScript',
-        grade: 100
-      },
-      {
-        id: 32,
-        name: 'Douglas Crockford',
-        course: 'JavaScript',
-        grade: 100
-      }]
+      grades: []
     };
+  }
+
+  componentDidMount() {
+    fetch('/api/grades', {
+      method: 'GET'
+    })
+      .then(res => res.json())
+      .then(dbGrades => this.setState({
+        grades: dbGrades
+      }));
   }
 
   render() {
