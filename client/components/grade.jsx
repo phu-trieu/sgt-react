@@ -4,10 +4,10 @@ class Grade extends Component {
   render(props) {
     const grade = this.props.grade;
     return (
-      <tr className="row">
-        <td className="col">{grade.name}</td>
-        <td className="col">{grade.course}</td>
-        <td className="col">{grade.grade}</td>
+      <tr>
+        <td scope="col">{grade.name}</td>
+        <td scope="col">{grade.course}</td>
+        <td scope="col">{grade.grade}</td>
       </tr>
     );
   }

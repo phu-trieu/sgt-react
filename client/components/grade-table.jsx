@@ -7,29 +7,27 @@ class GradeTable extends Component {
 
     if (grades.length === 0) {
       return (
-        <table className="table table-striped table-bordered ml-3">
-          <thead>
-            <tr className="row">
-              <th className="col">Student Name</th>
-              <th className="col">Course</th>
-              <th className="col">Grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>No grades are recorded</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table className="table table-striped ml-3 col">
+            <thead>
+              <tr>
+                <th scope="col">Student Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Grade</th>
+              </tr>
+            </thead>
+          </table>
+          <h4 className="ml-3">No grades recorded.</h4>
+        </div>
       );
     }
     return (
-      <table className="table table-striped table-bordered ml-3">
+      <table className="table table-striped">
         <thead>
-          <tr className="row">
-            <th className="col">Student Name</th>
-            <th className="col">Course</th>
-            <th className="col">Grade</th>
+          <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
